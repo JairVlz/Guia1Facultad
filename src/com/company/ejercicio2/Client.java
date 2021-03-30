@@ -7,8 +7,7 @@ public class Client {
     private String name;
     private String lastName;
     private String email;
-    private
-    double discountRate;
+    private double discountRate;
 
     public Client()
     { }

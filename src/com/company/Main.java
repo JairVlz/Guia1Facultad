@@ -2,6 +2,8 @@ package com.company;
 import com.company.ejercicio1.Book;
 import com.company.ejercicio2.Client;
 import com.company.ejercicio2.Bill;
+import com.company.ejercicio3.BankAccount;
+import com.company.ejercicio3.ClientBank;
 
 import java.util.Scanner;
 
@@ -13,6 +15,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
+    	ClientBank client= new ClientBank("Facundo","Ibañez", 'M');
+
+		BankAccount account =new BankAccount(55000,client);
 
     double newPrice;
 
@@ -49,5 +55,9 @@ public class Main {
 	factura.viewPrices();
 
 	factura.viewInfo();
+
+	
+
+
 	}
 }
