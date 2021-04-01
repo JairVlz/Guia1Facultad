@@ -53,5 +53,10 @@ public class BankAccount {
         setBalance(this.balance+moneyToAdd);
     }
 
+    public void viewAccount ()
+    {
+        System.out.println("Bank Account:\n"+"ID Bank:"+this.idBankAccount+"\n"+"Balance:"+this.balance+"\n"+"ID Client:"+this.client.getIdClient()+"\n"+"Name:"+this.client.getName()+"\n"+"LastName:"+this.client.getLastName()+"\n"+"Gender:"+this.client.getGender());
+    }
+
 
 }

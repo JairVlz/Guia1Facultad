@@ -22,6 +22,9 @@ public class Main {
 
     double newPrice;
 
+    double moneyToExtracAndDeposit;
+
+
     int newStock;
 
     Client consumer = new Client("Jorge","Martinez","jorgem@gmail.com",10);
@@ -56,7 +59,22 @@ public class Main {
 
 	factura.viewInfo();
 
-	
+	System.out.println("Enter money to extract:");
+
+	moneyToExtracAndDeposit=scanner.nextDouble();
+
+	account.extractMoney(moneyToExtracAndDeposit);
+
+	account.viewAccount();
+
+	System.out.println("Enter money to deposit:");
+
+	moneyToExtracAndDeposit = scanner.nextDouble();
+
+	account.moneyToDeposit(moneyToExtracAndDeposit);
+
+	account.viewAccount();
+
 
 
 	}
