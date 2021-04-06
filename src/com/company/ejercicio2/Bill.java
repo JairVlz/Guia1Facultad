@@ -4,6 +4,8 @@ import java.time.LocalTime;
 import java.util.UUID;
 import java.time.LocalDate;
 
+import static java.lang.System.out;
+
 public class Bill {
     private Client buyer;
     private String idBill;
@@ -11,10 +13,12 @@ public class Bill {
     private double totalAmount;
     private LocalDate date;
     private LocalTime hour;
+    private ItemSell [] item ;
+    private int amountItem;
 
     public Bill(){}
 
-    public Bill(Client buyer, double amount) {
+    public Bill(Client buyer, double amount,ItemSell [] item,int amountItem ) {
         this.buyer = new Client();
         this.buyer=buyer;
         this.idBill =UUID.randomUUID().toString();
@@ -22,6 +26,8 @@ public class Bill {
         this.totalAmount=0;
         this.date = LocalDate.now();
         this.hour = LocalTime.now();
+        this.item=item;
+        this.amountItem=amountItem;
 
     }
 
@@ -70,18 +76,33 @@ public class Bill {
     public void ammountDiscount ()
     {
         Double discount=this.buyer.getDiscountRate();
-        double finalAmount =this.amount-(this.amount*discount/100);
+        int i=0;
+        double finalAmount=0;
+        for(i=0;i<this.amountItem;i++)
+        {
+        finalAmount=finalAmount+ this.item[i].getUnitPrice();
+        }
+        finalAmount=(finalAmount*discount)/100;
         setTotalAmount(finalAmount);
     }
     public void viewPrices()
     {
-        System.out.println("Prices:\n"+"Amount:"+this.amount+"\n"+"Total amount:"+this.totalAmount);
+        out.println("\nPrices:\n"+"Amount:"+this.amount+"\n"+"Total amount:"+this.totalAmount);
     }
 
     public void viewInfo()
     {
+
         Client aux = this.buyer;
+
+        int i=0;
+
         LocalDateTime fecha=LocalDateTime.of(this.date,this.hour);
-        System.out.println("Bill:\n" + "ID:" + this.idBill + "\n" + "Date:" + fecha + "\n"+"Ammount:"+this.amount+"\n"+"Ammount final:\n"+this.totalAmount+"\n"+ "Cliente:\n"+ "ID:"+ aux.getIdClient() + "\n"+"Name:"+ aux.getName()+"\n"+"LastName:"+aux.getLastName()+"\n"+"Email:"+ aux.getEmail()+"\n"+"Discount:"+aux.getDiscountRate());
+
+        System.out.println("\nBill:\n" + "ID:" + this.idBill + "\n" + "Date:" + fecha + "\n"+"Ammount:"+this.amount+"\n"+"Ammount final:\n"+this.totalAmount+"\n"+ "Cliente:\n"+ "ID:"+ aux.getIdClient() + "\n"+"Name:"+ aux.getName()+"\n"+"LastName:"+aux.getLastName()+"\n"+"Email:"+ aux.getEmail()+"\n"+"Discount:"+aux.getDiscountRate());
+        for(i=0;i<this.amountItem;i++)
+        {
+            System.out.println("\nName Item:"+this.item[i].getNameItem()+"\nDescription:"+this.item[i].getDescription()+"\nID:"+this.item[i].getId()+"\nUnit Price:"+this.item[i].getUnitPrice());
+        }
     }
 }

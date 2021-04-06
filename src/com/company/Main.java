@@ -4,11 +4,14 @@ import com.company.ejercicio2.Client;
 import com.company.ejercicio2.Bill;
 import com.company.ejercicio3.BankAccount;
 import com.company.ejercicio3.ClientBank;
-
+import com.company.ejercicio2.ItemSell;
 import java.util.Scanner;
 
+
+
 public class Main {
-    private static Scanner scanner;
+	private static final int maxRegister=10;
+	private static Scanner scanner;
 
     static {
         scanner = new Scanner(System.in);
@@ -16,20 +19,30 @@ public class Main {
 
     public static void main(String[] args) {
 
-    	ClientBank client= new ClientBank("Facundo","Ibañez", 'M');
+    	String [] registerClient=new String[maxRegister];
+    	String [] registerMoney=new String[maxRegister];
 
-		BankAccount account =new BankAccount(55000,client);
+    	ClientBank client= new ClientBank("Facundo", 'M');
+
+    	BankAccount account =new BankAccount(55000,client,registerClient,registerMoney);
 
     double newPrice;
 
     double moneyToExtracAndDeposit;
 
+    int amountItem=3;
 
     int newStock;
 
     Client consumer = new Client("Jorge","Martinez","jorgem@gmail.com",10);
 
-	Bill factura =	new Bill(consumer, 2000);
+    ItemSell[] items=new ItemSell[amountItem];
+
+    items [0] = new ItemSell("Helado","Helado grido sabor a chocolate",50);
+    items [1] = new ItemSell("Pasta Dental","Pasta dental oral-B sabor a limon",65);
+    items [2] = new ItemSell("Desodrante","Desodrante axe aroma a chocolate",200);
+
+	Bill factura =	new Bill(consumer, 0, items, amountItem );
 
 	Book javaBook=new Book("Effective Java","Joshua","Bloch","joshua@email.com",'M',150,450);
 

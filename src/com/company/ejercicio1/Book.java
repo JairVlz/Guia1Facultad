@@ -100,6 +100,6 @@ public class Book {
     }
     public void BookNameAndPrice ()
     {
-        System.out.println("The book," + this.tittle +" from " + this.name+ " " + this.lastName + ". Sold at price " + this.price + " pesos");
+        System.out.println("The book," + this.tittle +" from " + this.name+ " " + this.lastName + ". Sold at price " + this.price + " pesos\n");
     }
 }
